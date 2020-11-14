@@ -2,13 +2,13 @@ package com.multithread.cocoon.presentation
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.multithread.cocoon.domain.model.TopStoryDomainEntity
+import com.multithread.cocoon.data.model.dto.TopStoryDTO
 
 class TopStoriesAdapterView(
-    private val callback: (entity: TopStoryDomainEntity) -> Unit
+    private val callback: (entity: TopStoryDTO.Result) -> Unit
 ) : RecyclerView.Adapter<TopStoriesViewHolder>() {
 
-    var itemList: List<TopStoryDomainEntity> = emptyList()
+    var itemList: List<TopStoryDTO.Result> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()

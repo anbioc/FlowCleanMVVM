@@ -10,11 +10,11 @@ import com.multithread.cocoon.domain.model.TopStoryDomainEntity
 
 class TopStoriesViewHolder constructor(
     private val containerView: View,
-    private val callback: (entity: TopStoryDomainEntity) -> Unit,
+    private val callback: (entity: TopStoryDTO.Result) -> Unit,
 ) : RecyclerView.ViewHolder(containerView) {
 
     companion object {
-        fun create(parent: ViewGroup, callback: (entity: TopStoryDomainEntity) -> Unit) =
+        fun create(parent: ViewGroup, callback: (entity: TopStoryDTO.Result) -> Unit) =
             TopStoriesViewHolder(
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_story, parent, false), callback)
