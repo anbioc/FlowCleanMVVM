@@ -1,4 +1,4 @@
-package com.multithread.cocoon.di
+package com.multithread.cocoon.di.scope
 
 import javax.inject.Qualifier
 

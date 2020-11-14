@@ -10,7 +10,7 @@ import com.multithread.cocoon.base.BaseEvent
 import com.multithread.cocoon.base.NetworkState
 import com.multithread.cocoon.base.ViewModelState
 import com.multithread.cocoon.base.viewmodel.BaseFlowViewModel
-import com.multithread.cocoon.di.DefaultDispatcher
+import com.multithread.cocoon.di.scope.DefaultDispatcher
 import com.multithread.cocoon.error.ErrorEntity
 import com.multithread.cocoon.extension.observeLiveData
 import kotlinx.coroutines.*

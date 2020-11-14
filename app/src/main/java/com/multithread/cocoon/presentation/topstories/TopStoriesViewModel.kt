@@ -2,7 +2,7 @@ package com.multithread.cocoon.presentation.topstories
 
 import com.multithread.cocoon.base.*
 import com.multithread.cocoon.base.viewmodel.BaseFlowViewModel
-import com.multithread.cocoon.di.MainDispatcher
+import com.multithread.cocoon.di.scope.MainDispatcher
 import com.multithread.cocoon.domain.usecase.TopStoriesUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.FlowPreview
