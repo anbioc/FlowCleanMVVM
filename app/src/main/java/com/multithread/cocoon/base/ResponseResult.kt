@@ -1,6 +1,6 @@
 package com.multithread.cocoon.base
 
-import com.core.core.error.ErrorEntity
+import com.multithread.cocoon.error.ErrorEntity
 import com.multithread.cocoon.AppConstants
 import java.lang.IllegalArgumentException
 

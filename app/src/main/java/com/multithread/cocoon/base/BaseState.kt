@@ -3,7 +3,7 @@ package com.multithread.cocoon.base
 import com.core.core.base.ActivityId
 import com.core.core.base.DirectionId
 import com.core.core.base.NavigationHolder
-import com.core.core.error.ErrorEntity
+import com.multithread.cocoon.error.ErrorEntity
 
 data class BaseState(
     var error: ErrorEntity = ErrorEntity.NoError,

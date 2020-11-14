@@ -1,4 +1,4 @@
-package com.core.core.error
+package com.multithread.cocoon.error
 
 sealed class ErrorEntity(val message: String) {
     class Network( message: String) : ErrorEntity(message){
