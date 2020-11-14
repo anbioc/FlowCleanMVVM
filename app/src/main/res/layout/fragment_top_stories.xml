@@ -36,6 +36,17 @@
             app:layout_constraintTop_toBottomOf="@id/topStoriesTitle"
             app:layout_constraintVertical_bias="1.0"
             tools:listitem="@layout/item_story" />
+
+        <ProgressBar
+            android:id="@+id/topStoriesProgressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:indeterminate="true"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

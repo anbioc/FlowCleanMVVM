@@ -9,7 +9,7 @@ class TopStoriesFragment :
     SwipeRefreshLayout.OnRefreshListener {
 
     override fun showLoadingSpinner(loading: Boolean) {
-        TODO("Not yet implemented")
+        topStoriesProgressBar.show(loading)
     }
 
     override fun getViewModelClass(): Class<TopStoriesViewModel> = TopStoriesViewModel::class.java
@@ -17,8 +17,14 @@ class TopStoriesFragment :
     override val contentResourceId: Int = com.multithread.cocoon.R.layout.fragment_top_stories
 
     @FlowPreview
+    override fun initView() {
+        super.initView()
+        viewModel.handleEvent(TopStoriesEvent.GetTopStories)
+    }
+    @FlowPreview
     override fun onRefresh() {
         viewModel.handleEvent(TopStoriesEvent.GetTopStories)
+        topStoriesSwipeRefresh.setRefresh(false)
     }
 
 }
