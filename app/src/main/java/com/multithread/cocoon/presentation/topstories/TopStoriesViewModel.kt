@@ -3,7 +3,6 @@ package com.multithread.cocoon.presentation.topstories
 import com.multithread.cocoon.base.*
 import com.multithread.cocoon.base.viewmodel.BaseFlowViewModel
 import com.multithread.cocoon.di.MainDispatcher
-import com.multithread.cocoon.domain.model.TopStoryDomainEntity
 import com.multithread.cocoon.domain.usecase.TopStoriesUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.FlowPreview
@@ -13,8 +12,7 @@ import javax.inject.Inject
 class TopStoriesViewModel @Inject constructor(
     private val topStoriesUseCase: TopStoriesUseCase,
     @MainDispatcher private val dispatcher: CoroutineDispatcher
-) :
-    BaseFlowViewModel<TopStoriesState, TopStoriesEvent>() {
+) : BaseFlowViewModel<TopStoriesState, TopStoriesEvent>() {
     override val initialState: TopStoriesState
         get() = TopStoriesState()
     override val loadingState: TopStoriesState
@@ -49,22 +47,7 @@ class TopStoriesViewModel @Inject constructor(
                     )
                 }
             )
-
         }
     }
-
 }
 
-sealed class TopStoriesEvent : BaseEvent {
-    object GetTopStories : TopStoriesEvent()
-}
-
-data class TopStoriesState(
-    val data: TopStoriesState.Data,
-    override var baseState: BaseState = BaseState()
-) : ViewModelState() {
-    sealed class Data {
-        data class TopStories(val story: TopStoryDomainEntity) : Data
-        object NoData : Data()
-    }
-}

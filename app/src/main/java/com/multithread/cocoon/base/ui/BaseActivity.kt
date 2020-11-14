@@ -2,6 +2,7 @@ package com.multithread.cocoon.base.ui
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import com.multithread.cocoon.base.BaseEvent
 import com.multithread.cocoon.base.ViewModelState
 import com.multithread.cocoon.base.viewmodel.BaseFlowViewModel
 import dagger.android.AndroidInjection
@@ -10,7 +11,7 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-abstract class BaseActivity<STATE : ViewModelState, VIEWMODEL : BaseFlowViewModel<STATE>> :
+abstract class BaseActivity<STATE : ViewModelState, EVENT: BaseEvent, VIEWMODEL : BaseFlowViewModel<STATE, EVENT>> :
     DaggerAppCompatActivity() {
 
     protected abstract val contentResourceId: Int

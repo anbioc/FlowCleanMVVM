@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Cocoon</string>
     <string name="please_try_again">Please Try Again</string>
+    <string name="top_stories_title">Top Stories</string>
 </resources>
