@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.multithread.cocoon.base.BaseEvent
 
 import com.multithread.cocoon.base.NetworkState
 import com.multithread.cocoon.base.ViewModelState
@@ -15,8 +16,8 @@ import com.multithread.cocoon.extension.observeLiveData
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
-abstract class BaseViewModelFragment<STATE : ViewModelState,
-        VIEWMODEL : BaseFlowViewModel<STATE>> : BaseFragment() {
+abstract class BaseViewModelFragment<STATE : ViewModelState, EVENT: BaseEvent,
+        VIEWMODEL : BaseFlowViewModel<STATE, EVENT>> : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 

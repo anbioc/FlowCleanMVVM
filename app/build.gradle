@@ -52,8 +52,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    /** Presentation */
     implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
-
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:${versions.swipeRefresh}"
 
 
     /** Extensions */

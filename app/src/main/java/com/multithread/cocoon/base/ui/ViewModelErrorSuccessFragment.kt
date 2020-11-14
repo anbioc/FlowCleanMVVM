@@ -1,12 +1,14 @@
 package com.multithread.cocoon.base.ui
 
 
+import com.multithread.cocoon.base.BaseEvent
 import com.multithread.cocoon.base.ViewModelState
 import com.multithread.cocoon.base.viewmodel.BaseFlowViewModel
 
 
-abstract class ViewModelErrorSuccessFragment<STATE : ViewModelState,
-        VIEWMODEL : BaseFlowViewModel<STATE>> : BaseViewModelFragment<STATE, VIEWMODEL>(){
+abstract class ViewModelErrorSuccessFragment<STATE : ViewModelState, EVENT : BaseEvent,
+        VIEWMODEL : BaseFlowViewModel<STATE, EVENT>> :
+    BaseViewModelFragment<STATE, EVENT, VIEWMODEL>() {
 
 
 //    @Inject
