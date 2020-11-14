@@ -4,6 +4,8 @@ package com.multithread.cocoon.base.ui
 import com.multithread.cocoon.base.BaseEvent
 import com.multithread.cocoon.base.ViewModelState
 import com.multithread.cocoon.base.viewmodel.BaseFlowViewModel
+import com.multithread.cocoon.util.ImageLoader
+import javax.inject.Inject
 
 
 abstract class ViewModelErrorSuccessFragment<STATE : ViewModelState, EVENT : BaseEvent,
@@ -11,8 +13,8 @@ abstract class ViewModelErrorSuccessFragment<STATE : ViewModelState, EVENT : Bas
     BaseViewModelFragment<STATE, EVENT, VIEWMODEL>() {
 
 
-//    @Inject
-//    lateinit var imageLoader: ImageLoader
+    @Inject
+    lateinit var imageLoader: ImageLoader
 
 
     override fun renderState(state: STATE) {

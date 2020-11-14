@@ -21,8 +21,8 @@ abstract class BaseViewModelFragment<STATE : ViewModelState, EVENT: BaseEvent,
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    @Inject
-    lateinit var networkState: NetworkState
+//    @Inject
+//    lateinit var networkState: NetworkState
 
     @DefaultDispatcher
     @Inject

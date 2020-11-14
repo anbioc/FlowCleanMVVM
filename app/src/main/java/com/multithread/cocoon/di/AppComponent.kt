@@ -9,12 +9,15 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
+import javax.inject.Singleton
 
 @PerApplication
+@Singleton
 @Component(
     modules = [
         AndroidInjectionModule::class,
         AndroidModule::class,
+        AppModule::class,
         ViewModelFactoryModule::class,
         NetworkModule::class,
         PersistenceModule::class,

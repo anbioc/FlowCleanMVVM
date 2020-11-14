@@ -1,6 +1,7 @@
 package com.multithread.cocoon
 
 import com.multithread.cocoon.di.AppComponent
+import com.multithread.cocoon.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
