@@ -1,5 +1,6 @@
 package com.multithread.cocoon.domain.model
 
+import com.multithread.cocoon.base.BaseDataModel
 import com.multithread.cocoon.data.model.dto.TopStoryDTO
 
 data class TopStoryDomainEntity(
@@ -9,7 +10,7 @@ data class TopStoryDomainEntity(
     var results: List<TopStoryDTO.Result>,
     var section: String,
     var status: String
-) {
+): BaseDataModel {
     data class Result(
         var abstract: String,
         var byline: String,
