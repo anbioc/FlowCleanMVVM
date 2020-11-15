@@ -43,7 +43,7 @@ class TopStoriesFragment :
         super.renderState(state)
         when(state.data){
             is TopStoriesState.Data.TopStories -> {
-                
+
             }
             else -> {
                 onNoData()
