@@ -4,6 +4,8 @@ import android.content.Context
 import com.multithread.cocoon.base.LocalMapper
 import com.multithread.cocoon.base.Mapper
 import com.multithread.cocoon.data.local.AppDataBase
+import com.multithread.cocoon.data.local.GetTopStoriesLocalDataSource
+import com.multithread.cocoon.data.local.GetTopStoriesLocalDataSourceImpl
 import com.multithread.cocoon.data.local.NewsDao
 import com.multithread.cocoon.data.model.dto.TopStoryDTO
 import com.multithread.cocoon.data.model.localEntity.TopStoryLocalEntity
@@ -36,8 +38,14 @@ interface DataModule {
                 topStoriesMapper: Mapper<TopStoryDTO, TopStoryDomainEntity>
         ): GetTopStoriesRemoteDataSource =
                 GetTopStoriesRemoteDataSourceImpl(newsAPI, topStoriesMapper)
-    }
 
+        @Provides
+        fun provideTopStoriesLocalDataBase(
+                newsDao: NewsDao,
+                mapper: LocalMapper<List<TopStoryLocalEntity>, TopStoryDomainEntity>
+        ): GetTopStoriesLocalDataSource =
+                GetTopStoriesLocalDataSourceImpl(newsDao, mapper)
+    }
 
     @Binds
     fun provideTopStoryMapper(mapper: TopStoryDomainMapper): Mapper<TopStoryDTO, TopStoryDomainEntity>

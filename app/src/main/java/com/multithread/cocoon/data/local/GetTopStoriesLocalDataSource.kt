@@ -1,0 +1,25 @@
+package com.multithread.cocoon.data.local
+
+import com.multithread.cocoon.base.BaseDataSource
+import com.multithread.cocoon.base.LocalMapper
+import com.multithread.cocoon.data.model.localEntity.TopStoryLocalEntity
+import com.multithread.cocoon.domain.model.TopStoryDomainEntity
+import javax.inject.Inject
+
+interface GetTopStoriesLocalDataSource : BaseDataSource {
+    suspend fun saveTopStories(items: TopStoryDomainEntity)
+    suspend fun getTopStories(): TopStoryDomainEntity
+}
+
+class GetTopStoriesLocalDataSourceImpl @Inject constructor(
+        private val newsDao: NewsDao,
+        private val mapper: LocalMapper<List<TopStoryLocalEntity>, TopStoryDomainEntity>
+) : GetTopStoriesLocalDataSource {
+
+    override suspend fun saveTopStories(items: TopStoryDomainEntity) =
+            newsDao.insertOrUpdateAll(mapper.mapToLocal(items))
+
+    override suspend fun getTopStories(): TopStoryDomainEntity =
+            mapper.mapFromLocal(newsDao.getTopStories())
+
+}
