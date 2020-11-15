@@ -1,6 +1,5 @@
 package com.multithread.cocoon.domain.repository
 
-import com.multithread.cocoon.base.RepositoryStrategy
 import com.multithread.cocoon.base.ResultResponse
 import com.multithread.cocoon.base.TopStoriesParam
 import com.multithread.cocoon.base.repository.StrategyFlowRepository
@@ -21,6 +20,7 @@ class TopStoriesRepository @Inject constructor(
             is TopStoriesParam.GetTopStories -> localTopStoriesDataSource.getTopStories()
             is TopStoriesParam.AddToFavorites -> localTopStoriesDataSource.addToFavorites(param.data)
             is TopStoriesParam.RemoveFromFavorites -> localTopStoriesDataSource.removeFromFavorites(param.data)
+            is TopStoriesParam.GetFavoriteTopStory -> localTopStoriesDataSource.getFavoriteTopStories()
         }
 
 

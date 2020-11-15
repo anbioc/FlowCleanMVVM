@@ -22,7 +22,10 @@ class TopStoriesViewModel @Inject constructor(
     override fun handleEvent(event: TopStoriesEvent) {
         when (event) {
             is TopStoriesEvent.GetTopStories -> {
-                getTopStories()
+                getTopStories(TopStoriesParam.GetTopStories)
+            }
+            is TopStoriesEvent.GetFavoriteTopStories -> {
+                getTopStories(TopStoriesParam.GetFavoriteTopStory)
             }
             is TopStoriesEvent.AddToFavorite -> {
                 changeFavoriteStatus(
@@ -64,8 +67,8 @@ class TopStoriesViewModel @Inject constructor(
         }
 
     @FlowPreview
-    private fun getTopStories() = triggerActionStartWithLoading(dispatcher) {
-        topStoriesUseCase.execute(TopStoriesParam.GetTopStories).collect { result ->
+    private fun getTopStories(param: TopStoriesParam) = triggerActionStartWithLoading(dispatcher) {
+        topStoriesUseCase.execute(param).collect { result ->
             result.subscribe(
                 successAction = {
                     initialState.copy(

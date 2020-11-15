@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.multithread.cocoon.di.ViewModelKey
 import com.multithread.cocoon.factory.AppViewModelFactory
+import com.multithread.cocoon.presentation.favorite.FavoriteViewModel
 import com.multithread.cocoon.presentation.main.MainViewModel
 import com.multithread.cocoon.presentation.topstories.TopStoriesViewModel
 import dagger.Binds
@@ -24,6 +25,10 @@ abstract class ViewModelFactoryModule {
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(FavoriteViewModel::class)
+    abstract fun bindFavoriteViewModel(viewModel: FavoriteViewModel): ViewModel
 
     @Binds
     internal abstract fun bindViewModelFactory(factory : AppViewModelFactory) : ViewModelProvider.Factory

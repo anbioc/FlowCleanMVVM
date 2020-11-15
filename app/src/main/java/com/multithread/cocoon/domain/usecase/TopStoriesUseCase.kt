@@ -32,7 +32,10 @@ class TopStoriesUseCase @Inject constructor(
             param,
             RepositoryStrategy.OfflineFirst
         )
-
+        is TopStoriesParam.GetFavoriteTopStory -> topStoriesRepository.getResult(
+            param,
+            RepositoryStrategy.Local
+        )
     }
 
 

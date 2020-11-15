@@ -12,8 +12,10 @@ sealed class CallbackParam{
     data class Click(val data: TopStoryDomainEntity.Result): CallbackParam()
 
 }
+
 sealed class TopStoriesEvent : BaseEvent {
     object GetTopStories : TopStoriesEvent()
+    object GetFavoriteTopStories : TopStoriesEvent()
     data class AddToFavorite(val data: TopStoryDomainEntity.Result): TopStoriesEvent()
     data class RemoveFromFavorite(val data: TopStoryDomainEntity.Result): TopStoriesEvent()
 }

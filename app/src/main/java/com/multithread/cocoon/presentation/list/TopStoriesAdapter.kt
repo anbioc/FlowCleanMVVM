@@ -1,8 +1,7 @@
-package com.multithread.cocoon.presentation
+package com.multithread.cocoon.presentation.list
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.multithread.cocoon.data.model.dto.TopStoryDTO
 import com.multithread.cocoon.domain.model.TopStoryDomainEntity
 import com.multithread.cocoon.presentation.topstories.CallbackParam
 import com.multithread.cocoon.util.ImageLoader

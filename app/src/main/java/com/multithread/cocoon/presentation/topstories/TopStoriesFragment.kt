@@ -2,9 +2,8 @@ package com.multithread.cocoon.presentation.topstories
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.multithread.cocoon.base.ui.ViewModelErrorSuccessFragment
-import com.multithread.cocoon.domain.model.TopStoryDomainEntity
 import com.multithread.cocoon.extension.show
-import com.multithread.cocoon.presentation.TopStoriesAdapter
+import com.multithread.cocoon.presentation.list.TopStoriesAdapter
 import com.multithread.cocoon.presentation.main.DetailActivity
 import kotlinx.android.synthetic.main.fragment_top_stories.*
 import kotlinx.coroutines.FlowPreview

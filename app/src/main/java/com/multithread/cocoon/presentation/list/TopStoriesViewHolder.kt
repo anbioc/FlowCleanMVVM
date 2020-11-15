@@ -1,4 +1,4 @@
-package com.multithread.cocoon.presentation
+package com.multithread.cocoon.presentation.list
 
 import android.view.LayoutInflater
 import android.view.View

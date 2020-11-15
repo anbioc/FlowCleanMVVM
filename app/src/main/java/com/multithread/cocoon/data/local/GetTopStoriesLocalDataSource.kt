@@ -11,13 +11,22 @@ interface GetTopStoriesLocalDataSource : BaseDataSource {
     suspend fun getTopStories(): ResultResponse<TopStoryDomainEntity>
     suspend fun addToFavorites(data: TopStoryDomainEntity.Result): ResultResponse<TopStoryDomainEntity>
     suspend fun removeFromFavorites(data: TopStoryDomainEntity.Result): ResultResponse<TopStoryDomainEntity>
+    suspend fun getFavoriteTopStories(): ResultResponse<TopStoryDomainEntity>
 }
 
 class GetTopStoriesLocalDataSourceImpl @Inject constructor(
-        private val newsDao: NewsDao,
-        private val mapper: LocalMapper<List<TopStoryLocalEntity>, TopStoryDomainEntity>,
-        private val singleMapper: Mapper<TopStoryDomainEntity.Result, TopStoryLocalEntity>
+    private val newsDao: NewsDao,
+    private val mapper: LocalMapper<List<TopStoryLocalEntity>, TopStoryDomainEntity>,
+    private val singleMapper: Mapper<TopStoryDomainEntity.Result, TopStoryLocalEntity>
 ) : GetTopStoriesLocalDataSource {
+
+    override suspend fun getFavoriteTopStories(): ResultResponse<TopStoryDomainEntity> =
+        mapper.mapFromLocal(
+            newsDao.getTopStories().filter {
+                it.favorite
+            }
+        ).wrapAroundSuccessResponse()
+
 
     override suspend fun removeFromFavorites(data: TopStoryDomainEntity.Result): ResultResponse<TopStoryDomainEntity> =
         newsDao.insertOrUpdate(
@@ -25,16 +34,18 @@ class GetTopStoriesLocalDataSourceImpl @Inject constructor(
         ).run {
             getTopStories()
         }
-    override suspend fun addToFavorites(data: TopStoryDomainEntity.Result): ResultResponse<TopStoryDomainEntity>  =
+
+    override suspend fun addToFavorites(data: TopStoryDomainEntity.Result): ResultResponse<TopStoryDomainEntity> =
         newsDao.insertOrUpdate(
             singleMapper.map(data.copy(favorite = true))
         ).run {
             getTopStories()
         }
+
     override suspend fun saveTopStories(items: TopStoryDomainEntity) =
-            newsDao.insertOrUpdateAll(mapper.mapToLocal(items))
+        newsDao.insertOrUpdateAll(mapper.mapToLocal(items))
 
     override suspend fun getTopStories(): ResultResponse<TopStoryDomainEntity> =
-            mapper.mapFromLocal(newsDao.getTopStories()).wrapAroundSuccessResponse()
+        mapper.mapFromLocal(newsDao.getTopStories()).wrapAroundSuccessResponse()
 
 }
