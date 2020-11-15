@@ -9,4 +9,8 @@ object AppConstants {
         }
         const val TIME_OUT = 10
     }
+
+    object NavigationKey {
+        const val TOP_STORY_KEY = "TOP_STORY_KEY"
+    }
 }
