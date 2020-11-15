@@ -7,9 +7,9 @@ import java.util.concurrent.TimeUnit
 
 class NetworkInterceptor: Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        if(!isInternetAvailable()){
-            throw NetworkException("network is not available!")
-        }
+//        if(!isInternetAvailable()){
+//            throw NetworkException("network is not available!")
+//        }
         return chain.proceed(chain.withReadTimeout(4, TimeUnit.SECONDS).request())
     }
 

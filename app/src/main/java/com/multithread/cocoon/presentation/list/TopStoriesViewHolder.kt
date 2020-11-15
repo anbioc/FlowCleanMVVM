@@ -23,12 +23,20 @@ class TopStoriesViewHolder constructor(
         fun create(
             parent: ViewGroup,
             callback: (entity: CallbackParam) -> Unit,
-            imageLoader: ImageLoader
-        ) =
+            imageLoader: ImageLoader,
+            isFavorite: Boolean
+        ) = if (isFavorite){
+            TopStoriesViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_story_grid, parent, false), callback, imageLoader
+            )
+        }else {
             TopStoriesViewHolder(
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_story, parent, false), callback, imageLoader
             )
+        }
+
 
     }
 

@@ -2,6 +2,7 @@ package com.multithread.cocoon.presentation.main
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import com.multithread.cocoon.AppConstants
 import com.multithread.cocoon.R
 import com.multithread.cocoon.base.ui.FullScreenActivity
@@ -28,8 +29,17 @@ class DetailActivity : FullScreenActivity<MainState, MainEvent, MainViewModel>()
             detailTitleTextView.text = title
             detailMessageTextView.text = abstract
             detailLinkTextView.text = getString(R.string.story_link)
+            setLinkListener()
             imageLoader.loadImage(
                 detailImageView, 0, 0, imageUrl)
+        }
+    }
+
+    private fun setLinkListener() {
+        detailLinkTextView.setOnClickListener {
+            Uri.parse(story!!.url).apply {
+                startActivity(Intent(Intent.ACTION_VIEW, this))
+            }
         }
     }
 

@@ -75,8 +75,11 @@ class TopStoriesFragment :
 
     private fun onNoData() {
         topStoriesSwipeRefresh.isRefreshing = false
-        topStoriesList.show(false)
-        topStoriesEmptyTextView.show(true)
+        storiesAdapter.itemList.isEmpty().apply {
+            topStoriesList.show(this.not())
+            topStoriesEmptyTextView.show(this)
+        }
+
     }
 
     @FlowPreview
