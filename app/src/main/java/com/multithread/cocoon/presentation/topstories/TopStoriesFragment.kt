@@ -61,4 +61,8 @@ class TopStoriesFragment :
         topStoriesSwipeRefresh.isRefreshing = false
     }
 
+    companion object {
+        fun newInstance() = TopStoriesFragment()
+    }
+
 }

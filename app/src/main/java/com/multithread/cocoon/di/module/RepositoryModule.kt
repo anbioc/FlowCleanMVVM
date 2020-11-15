@@ -2,6 +2,7 @@ package com.multithread.cocoon.di.module
 
 import com.multithread.cocoon.base.AnyParam
 import com.multithread.cocoon.base.repository.StrategyFlowRepository
+import com.multithread.cocoon.data.local.GetTopStoriesLocalDataSource
 import com.multithread.cocoon.data.remote.GetTopStoriesRemoteDataSource
 import com.multithread.cocoon.domain.model.TopStoryDomainEntity
 import com.multithread.cocoon.domain.repository.TopStoriesRepository
@@ -13,10 +14,13 @@ import dagger.Provides
 class RepositoryModule {
     @Provides
     fun provideTopStoryRepository(
-        remoteTopStoriesDataSource: GetTopStoriesRemoteDataSource,
-        errorContainer: ErrorContainer
+            localTopStoriesDataSource: GetTopStoriesLocalDataSource,
+            remoteTopStoriesDataSource: GetTopStoriesRemoteDataSource,
+            errorContainer: ErrorContainer
     ): StrategyFlowRepository<TopStoryDomainEntity, AnyParam> =
-        TopStoriesRepository(
-            remoteTopStoriesDataSource, errorContainer
-        )
+            TopStoriesRepository(
+                    localTopStoriesDataSource,
+                    remoteTopStoriesDataSource,
+                    errorContainer
+            )
 }

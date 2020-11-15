@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.multithread.cocoon.di.ViewModelKey
 import com.multithread.cocoon.factory.AppViewModelFactory
+import com.multithread.cocoon.presentation.main.MainViewModel
 import com.multithread.cocoon.presentation.topstories.TopStoriesViewModel
 import dagger.Binds
 import dagger.Module
@@ -17,6 +18,11 @@ abstract class ViewModelFactoryModule {
     @IntoMap
     @ViewModelKey(TopStoriesViewModel::class)
     abstract fun bindTopStoriesViewModel(viewModel: TopStoriesViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
 
 
     @Binds

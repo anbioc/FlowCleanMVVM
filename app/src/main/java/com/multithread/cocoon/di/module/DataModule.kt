@@ -25,6 +25,10 @@ interface DataModule {
     companion object {
 
         @Provides
+        fun provideTopStoryLocalMapper(): LocalMapper<List<TopStoryLocalEntity>, TopStoryDomainEntity> =
+                TopStoryLocalMapper()
+
+        @Provides
         fun provideNewsDao(appDataBase: AppDataBase): NewsDao =
                 appDataBase.provideNewsDao()
 
@@ -50,6 +54,4 @@ interface DataModule {
     @Binds
     fun provideTopStoryMapper(mapper: TopStoryDomainMapper): Mapper<TopStoryDTO, TopStoryDomainEntity>
 
-    @Binds
-    fun provideTopStoryLocalMapper(mapper: TopStoryLocalMapper): LocalMapper<List<TopStoryLocalEntity>, TopStoryDomainEntity>
 }
