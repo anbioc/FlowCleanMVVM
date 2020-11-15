@@ -13,10 +13,9 @@ class TopStoriesViewModel @Inject constructor(
     private val topStoriesUseCase: TopStoriesUseCase,
     @MainDispatcher private val dispatcher: CoroutineDispatcher
 ) : BaseFlowViewModel<TopStoriesState, TopStoriesEvent>() {
-    override val initialState: TopStoriesState
-        get() = TopStoriesState()
-    override val loadingState: TopStoriesState
-        get() = loadingState.loading()
+
+    override val initialState: TopStoriesState = TopStoriesState()
+    override val loadingState: TopStoriesState = initialState.loading()
 
     @FlowPreview
     override fun handleEvent(event: TopStoriesEvent) {

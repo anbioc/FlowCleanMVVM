@@ -3,14 +3,15 @@ package com.multithread.cocoon.presentation
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.multithread.cocoon.data.model.dto.TopStoryDTO
+import com.multithread.cocoon.domain.model.TopStoryDomainEntity
 import com.multithread.cocoon.util.ImageLoader
 
 class TopStoriesAdapterView(
-    private val callback: (entity: TopStoryDTO.Result) -> Unit,
+    private val callback: (entity: TopStoryDomainEntity.Result) -> Unit,
     private val imageLoader: ImageLoader
 ) : RecyclerView.Adapter<TopStoriesViewHolder>() {
 
-    var itemList: List<TopStoryDTO.Result> = emptyList()
+    var itemList: List<TopStoryDomainEntity.Result> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()

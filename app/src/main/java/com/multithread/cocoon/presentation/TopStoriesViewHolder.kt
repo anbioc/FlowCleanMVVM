@@ -14,14 +14,14 @@ import com.multithread.cocoon.util.ImageLoader
 
 class TopStoriesViewHolder constructor(
     containerView: View,
-    private val callback: (entity: TopStoryDTO.Result) -> Unit,
+    private val callback: (entity: TopStoryDomainEntity.Result) -> Unit,
     private val imageLoader: ImageLoader
 ) : RecyclerView.ViewHolder(containerView) {
 
     companion object {
         fun create(
             parent: ViewGroup,
-            callback: (entity: TopStoryDTO.Result) -> Unit,
+            callback: (entity: TopStoryDomainEntity.Result) -> Unit,
             imageLoader: ImageLoader
         ) =
             TopStoriesViewHolder(
@@ -31,14 +31,17 @@ class TopStoriesViewHolder constructor(
 
     }
 
-    fun bind(story: TopStoryDTO.Result) {
+    fun bind(story: TopStoryDomainEntity.Result) {
+        itemView.setOnClickListener {
+            callback(story)
+        }
         itemView.findViewById<TextView>(R.id.itemStoryTitle).text = story.title
         itemView.findViewById<TextView>(R.id.itemStoryDateTime).text = story.updatedDate
         imageLoader.loadImage(
             itemView.findViewById<ImageView>(R.id.itemStoryImage),
             0,
             0,
-            story.multimedia[0].url
+            story.imageUrl
         )
     }
 }

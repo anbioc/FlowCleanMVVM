@@ -17,9 +17,9 @@ class StoriesFragmentViewPagerAdapter (fragmentManager: FragmentManager):
     override fun getItem(position: Int): Fragment = fragments[position]
 
     override fun getPageTitle(position: Int): CharSequence? = when(position){
-        1 -> "Top Stories"
-        2 -> "Favorites"
-        else -> ""
+        0 -> "Top Stories"
+        1 -> "Favorites"
+        else -> super.getPageTitle(position)
     }
 
 }

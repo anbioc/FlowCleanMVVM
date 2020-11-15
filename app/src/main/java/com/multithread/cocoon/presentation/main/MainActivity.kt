@@ -16,6 +16,15 @@ class MainActivity : FullScreenActivity<MainState, MainEvent, MainViewModel>() {
         super.initView()
         StoriesFragmentViewPagerAdapter(supportFragmentManager).apply {
             mainViewPager.adapter = this
+            mainTabLayout.setupWithViewPager(mainViewPager)
+        }
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.fragments.size > 0){
+            supportFragmentManager.popBackStack()
+        }else {
+            super.onBackPressed()
         }
     }
 }

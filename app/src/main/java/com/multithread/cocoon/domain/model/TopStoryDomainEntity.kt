@@ -1,11 +1,16 @@
 package com.multithread.cocoon.domain.model
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.multithread.cocoon.base.BaseDataModel
 
 data class TopStoryDomainEntity(
         val results: List<Result> = emptyList()
-) : BaseDataModel {
-    data class Result(
+) : BaseDataModel, Parcelable {
+        constructor(parcel: Parcel) : this(parcel.createTypedArrayList(Result) ?: emptyList()) {
+        }
+
+        data class Result(
             var abstract: String,
             var byline: String,
             var createdDate: String,
@@ -21,5 +26,74 @@ data class TopStoryDomainEntity(
             var updatedDate: String,
             var uri: String,
             var url: String
-    )
+    ) : Parcelable {
+            constructor(parcel: Parcel) : this(
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: "",
+                    parcel.readString() ?: ""
+            ) {
+            }
+
+            override fun writeToParcel(parcel: Parcel, flags: Int) {
+                    parcel.writeString(abstract)
+                    parcel.writeString(byline)
+                    parcel.writeString(createdDate)
+                    parcel.writeString(itemType)
+                    parcel.writeString(kicker)
+                    parcel.writeString(materialTypeFacet)
+                    parcel.writeString(imageUrl)
+                    parcel.writeString(publishedDate)
+                    parcel.writeString(section)
+                    parcel.writeString(shortUrl)
+                    parcel.writeString(subsection)
+                    parcel.writeString(title)
+                    parcel.writeString(updatedDate)
+                    parcel.writeString(uri)
+                    parcel.writeString(url)
+            }
+
+            override fun describeContents(): Int {
+                    return 0
+            }
+
+            companion object CREATOR : Parcelable.Creator<Result> {
+                    override fun createFromParcel(parcel: Parcel): Result {
+                            return Result(parcel)
+                    }
+
+                    override fun newArray(size: Int): Array<Result?> {
+                            return arrayOfNulls(size)
+                    }
+            }
+    }
+
+        override fun writeToParcel(parcel: Parcel, flags: Int) {
+                parcel.writeTypedList(results)
+        }
+
+        override fun describeContents(): Int {
+                return 0
+        }
+
+        companion object CREATOR : Parcelable.Creator<TopStoryDomainEntity> {
+                override fun createFromParcel(parcel: Parcel): TopStoryDomainEntity {
+                        return TopStoryDomainEntity(parcel)
+                }
+
+                override fun newArray(size: Int): Array<TopStoryDomainEntity?> {
+                        return arrayOfNulls(size)
+                }
+        }
 }

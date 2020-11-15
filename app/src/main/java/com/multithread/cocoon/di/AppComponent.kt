@@ -3,6 +3,7 @@ package com.multithread.cocoon.di
 import android.app.Application
 import com.multithread.cocoon.di.module.*
 import com.multithread.cocoon.di.scope.PerApplication
+import com.multithread.cocoon.presentation.main.di.MainActivityModule
 import com.multithread.cocoon.presentation.topstories.di.TopStoriesFragmentBinding
 import dagger.BindsInstance
 import dagger.Component
@@ -23,8 +24,9 @@ import javax.inject.Singleton
         PersistenceModule::class,
         UseCaseModule::class,
         DataModule::class,
-        TopStoriesFragmentBinding::class,
         RepositoryModule::class,
+        TopStoriesFragmentBinding::class,
+        MainActivityModule::class
     ]
 )
 interface AppComponent : AndroidInjector<DaggerApplication> {

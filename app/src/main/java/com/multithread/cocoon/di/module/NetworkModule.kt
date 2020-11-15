@@ -27,10 +27,12 @@ class NetworkModule {
         OkHttpClient.Builder()
             .addInterceptor(NetworkInterceptor())
             .cache(null)
-            .readTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
-            }).build()
+             }).build()
 
     @Provides
     @Singleton
