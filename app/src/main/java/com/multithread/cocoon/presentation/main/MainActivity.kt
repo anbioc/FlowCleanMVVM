@@ -21,10 +21,6 @@ class MainActivity : FullScreenActivity<MainState, MainEvent, MainViewModel>() {
     }
 
     override fun onBackPressed() {
-        if (supportFragmentManager.fragments.size > 0){
-            supportFragmentManager.popBackStack()
-        }else {
-            finish()
-        }
+        finish()
     }
 }

@@ -57,8 +57,11 @@ class TopStoriesFragment :
             is TopStoriesState.Data.TopStories -> {
                 onDataReceived(state.data)
             }
-            else -> {
+            is TopStoriesState.Data.NoData -> {
                 onNoData()
+            }
+            else -> {
+                // do nothing
             }
         }
     }
@@ -67,12 +70,13 @@ class TopStoriesFragment :
         topStoriesList.show(true)
         topStoriesSwipeRefresh.isRefreshing = false
         storiesAdapter.itemList = data.story.results
+        topStoriesEmptyTextView.show(false)
     }
 
     private fun onNoData() {
         topStoriesSwipeRefresh.isRefreshing = false
         topStoriesList.show(false)
-
+        topStoriesEmptyTextView.show(true)
     }
 
     @FlowPreview

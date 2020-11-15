@@ -1,8 +1,10 @@
 package com.multithread.cocoon.data.local
 
+import com.multithread.cocoon.AppConstants
 import com.multithread.cocoon.base.*
 import com.multithread.cocoon.data.model.localEntity.TopStoryLocalEntity
 import com.multithread.cocoon.domain.model.TopStoryDomainEntity
+import com.multithread.cocoon.error.ErrorEntity
 import okhttp3.internal.wait
 import javax.inject.Inject
 
@@ -46,6 +48,12 @@ class GetTopStoriesLocalDataSourceImpl @Inject constructor(
         newsDao.insertOrUpdateAll(mapper.mapToLocal(items))
 
     override suspend fun getTopStories(): ResultResponse<TopStoryDomainEntity> =
-        mapper.mapFromLocal(newsDao.getTopStories()).wrapAroundSuccessResponse()
+        newsDao.getTopStories().run {
+            if (this.isEmpty()) {
+                ResultResponse.Failure(ErrorEntity.NotFound(AppConstants.DATA_NOT_FOUND))
+            } else {
+                mapper.mapFromLocal(newsDao.getTopStories()).wrapAroundSuccessResponse()
+            }
+        }
 
 }
