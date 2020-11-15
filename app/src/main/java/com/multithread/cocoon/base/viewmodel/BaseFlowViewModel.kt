@@ -1,13 +1,13 @@
 package com.multithread.cocoon.base.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.*
+import com.multithread.cocoon.base.BaseEvent
 import com.multithread.cocoon.base.ResultResponse
 import com.multithread.cocoon.base.ViewModelState
 import kotlinx.coroutines.*
 
 
-abstract class BaseFlowViewModel<STATE : ViewModelState> : ViewModel() {
+abstract class BaseFlowViewModel<STATE : ViewModelState, EVENT: BaseEvent> : ViewModel() {
 
     abstract val initialState: STATE
 
@@ -16,6 +16,8 @@ abstract class BaseFlowViewModel<STATE : ViewModelState> : ViewModel() {
         get() = _state
 
     protected val jobList = mutableListOf<Job>()
+
+    abstract fun handleEvent(event: EVENT)
 
     /**
      * Triggers given action in either of failure or success results
@@ -91,44 +93,5 @@ abstract class BaseFlowViewModel<STATE : ViewModelState> : ViewModel() {
     protected abstract val loadingState: STATE
 
 }
-
-
-abstract class BaseFlowAndroidViewModel<STATE : ViewModelState>(application: Application) :
-    AndroidViewModel(application) {
-
-    protected val _state = MutableLiveData<STATE>()
-    val state: LiveData<STATE>
-        get() = _state
-
-    abstract val initialState: STATE
-
-
-    /**
-     * Triggers given action in either of failure or success results
-     * or if there is another type of result triggers default action.
-     */
-    fun <T> ResultResponse<T>.subscribe(
-        successAction: (t: ResultResponse<T>) -> STATE,
-        failureAction: (t: ResultResponse<T>) -> STATE,
-        defaultAction: ((t: ResultResponse<T>) -> STATE)? = null
-    ) = when {
-        this.isSuccess() -> {
-            _state.postValue(successAction(this))
-        }
-        this.isFailure() -> {
-            _state.postValue(failureAction(this))
-        }
-        else -> {
-            _state.postValue(
-                defaultAction?.let {
-                    it(this)
-                }
-            )
-        }
-    }
-
-
-}
-
 
 

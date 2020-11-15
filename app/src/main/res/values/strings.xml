@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Cocoon</string>
+    <string name="please_try_again">Please Try Again</string>
+    <string name="top_stories_title">Top Stories</string>
+    <string name="story_link">Story Link</string>
+    <string name="like">Like</string>
+    <string name="no_data_available">No Data Available</string>
 </resources>

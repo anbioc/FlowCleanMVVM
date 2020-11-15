@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="text_regular_title_dark">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_size_intermediate</item>
+        <item name="android:textColor">@color/textPrimaryDark</item>
+    </style>
+
+    <style name="text_regular_medium_dark">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_intermediate</item>
+        <item name="android:textColor">@color/textPrimaryDark</item>
+    </style>
+
+    <style name="text_regular_sub_title_dark">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/textSecondaryDark</item>
+    </style>
+</resources>

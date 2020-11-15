@@ -31,7 +31,11 @@ abstract class StrategyFlowRepository<T, PARAM : Param>(
      */
     @ExperimentalCoroutinesApi
     private suspend fun getOfflineFirst(param: PARAM) = flow {
-        emit(getLocal(param))
+        getLocal(param).apply {
+            if (isSuccess()) {
+                emit(this)
+            }
+        }
         getRemote(param).apply {
             if (this.isSuccess()) {
                 saveRemote((this as ResultResponse.Success<T>).data)
@@ -39,7 +43,7 @@ abstract class StrategyFlowRepository<T, PARAM : Param>(
             } else {
                 emit(this)
             }
-            
+
         }
     }.handleSuccessFailure(
         doOnError = {
