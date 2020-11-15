@@ -2,13 +2,11 @@ package com.multithread.cocoon.presentation.topstories
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.multithread.cocoon.base.ui.ViewModelErrorSuccessFragment
-import com.multithread.cocoon.data.model.dto.TopStoryDTO
 import com.multithread.cocoon.domain.model.TopStoryDomainEntity
 import com.multithread.cocoon.extension.show
-import com.multithread.cocoon.presentation.TopStoriesAdapterView
+import com.multithread.cocoon.presentation.TopStoriesAdapter
 import com.multithread.cocoon.presentation.main.DetailActivity
 import kotlinx.android.synthetic.main.fragment_top_stories.*
-import kotlinx.android.synthetic.main.item_story.*
 import kotlinx.coroutines.FlowPreview
 
 class TopStoriesFragment :
@@ -16,11 +14,22 @@ class TopStoriesFragment :
     SwipeRefreshLayout.OnRefreshListener {
 
     private val storiesAdapter by lazy {
-        TopStoriesAdapterView(storyCallback, imageLoader)
+        TopStoriesAdapter(storyCallback, imageLoader)
     }
 
-    private val storyCallback: (item: TopStoryDomainEntity.Result) -> Unit = {
-        startActivity(DetailActivity.newInstance(requireContext(), it))
+    @FlowPreview
+    private val storyCallback: (item: CallbackParam) -> Unit = {
+        when (it){
+            is CallbackParam.Like -> {
+                viewModel.handleEvent(TopStoriesEvent.AddToFavorite(it.data))
+            }
+            is CallbackParam.Dislike -> {
+                viewModel.handleEvent(TopStoriesEvent.RemoveFromFavorite(it.data))
+            }
+            is CallbackParam.Click -> {
+                startActivity(DetailActivity.newInstance(requireContext(), it.data))
+            }
+        }
     }
 
     override fun getViewModelClass(): Class<TopStoriesViewModel> = TopStoriesViewModel::class.java

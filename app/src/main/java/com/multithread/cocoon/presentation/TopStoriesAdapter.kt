@@ -4,10 +4,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.multithread.cocoon.data.model.dto.TopStoryDTO
 import com.multithread.cocoon.domain.model.TopStoryDomainEntity
+import com.multithread.cocoon.presentation.topstories.CallbackParam
 import com.multithread.cocoon.util.ImageLoader
 
-class TopStoriesAdapterView(
-    private val callback: (entity: TopStoryDomainEntity.Result) -> Unit,
+class TopStoriesAdapter(
+    private val callback: (entity: CallbackParam) -> Unit,
     private val imageLoader: ImageLoader
 ) : RecyclerView.Adapter<TopStoriesViewHolder>() {
 

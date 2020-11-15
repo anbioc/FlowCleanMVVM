@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginBottom="@dimen/margin_intermediate"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_intermediate">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/itemStoryCardView"
@@ -18,45 +18,90 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/margin_small">
-
-            <ImageView
-                android:id="@+id/itemStoryImage"
-                android:layout_width="@dimen/item_image_medium"
-                android:layout_height="@dimen/item_image_medium"
-                android:scaleType="centerCrop"
-                tools:srcCompat="@tools:sample/avatars" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:gravity="center"
-                android:layout_marginStart="@dimen/margin_small"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_small">
 
-                <TextView
-                    style="@style/text_regular_title_dark"
-                    android:id="@+id/itemStoryTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:maxLines="1"
-                    android:maxLength="30"
-                    tools:text="Story Title" />
+                <ImageView
+                    android:id="@+id/itemStoryImage"
+                    android:layout_width="@dimen/item_image_medium"
+                    android:layout_height="@dimen/item_image_medium"
+                    android:scaleType="centerCrop"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-                <TextView
-                    android:id="@+id/itemStoryDateTime"
-                    style="@style/text_regular_sub_title_dark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:layout_gravity="start"
-                    android:maxLength="40"
-                    tools:text="Story Date and Time" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/itemStoryTitle"
+                        style="@style/text_regular_title_dark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        tools:text="Story Title" />
+
+                    <TextView
+                        android:id="@+id/itemStoryDateTime"
+                        style="@style/text_regular_sub_title_dark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:maxLength="40"
+                        android:maxLines="1"
+                        tools:text="Story Date and Time" />
+                </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:id="@+id/itemStorySeparator1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:alpha=".1"
+                android:background="@color/black" />
+
+            <LinearLayout
+                android:id="@+id/itemStoryLikeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/itemStoryLikeLabel"
+                    style="@style/text_regular_title_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    android:gravity="center"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:text="@string/like"/>
+
+                <ImageView
+                    android:id="@+id/itemTopStoryIcon"
+                    android:layout_width="@dimen/item_image_small"
+                    android:layout_height="@dimen/item_image_small"
+                    android:padding="@dimen/margin_small"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@android:drawable/btn_star_big_on" />
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

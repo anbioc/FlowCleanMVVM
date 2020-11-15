@@ -3,15 +3,16 @@ package com.multithread.cocoon.presentation.main
 import android.content.Context
 import android.content.Intent
 import com.multithread.cocoon.AppConstants
+import com.multithread.cocoon.R
 import com.multithread.cocoon.base.ui.FullScreenActivity
 import com.multithread.cocoon.domain.model.TopStoryDomainEntity
 import com.multithread.cocoon.util.ImageLoader
-import kotlinx.android.synthetic.main.detail_activity.*
+import kotlinx.android.synthetic.main.activity_detail.*
 import javax.inject.Inject
 
 class DetailActivity : FullScreenActivity<MainState, MainEvent, MainViewModel>() {
     private var story: TopStoryDomainEntity.Result? = null
-    override val contentResourceId: Int = com.multithread.cocoon.R.layout.detail_activity
+    override val contentResourceId: Int = com.multithread.cocoon.R.layout.activity_detail
 
 
     @Inject
@@ -26,12 +27,9 @@ class DetailActivity : FullScreenActivity<MainState, MainEvent, MainViewModel>()
         story?.apply {
             detailTitleTextView.text = title
             detailMessageTextView.text = abstract
-            detailLinkTextView.text = url
+            detailLinkTextView.text = getString(R.string.story_link)
             imageLoader.loadImage(
-                detailImageView,
-                0, 0,
-                imageUrl
-            )
+                detailImageView, 0, 0, imageUrl)
         }
     }
 

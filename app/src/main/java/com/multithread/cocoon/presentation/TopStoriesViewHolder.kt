@@ -1,6 +1,5 @@
 package com.multithread.cocoon.presentation
 
-import android.service.autofill.TextValueSanitizer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,20 +7,22 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.multithread.cocoon.R
-import com.multithread.cocoon.data.model.dto.TopStoryDTO
 import com.multithread.cocoon.domain.model.TopStoryDomainEntity
+import com.multithread.cocoon.extension.show
+import com.multithread.cocoon.presentation.topstories.CallbackParam
 import com.multithread.cocoon.util.ImageLoader
+import kotlinx.android.synthetic.main.item_story.view.*
 
 class TopStoriesViewHolder constructor(
     containerView: View,
-    private val callback: (entity: TopStoryDomainEntity.Result) -> Unit,
+    private val callback: (entity: CallbackParam) -> Unit,
     private val imageLoader: ImageLoader
 ) : RecyclerView.ViewHolder(containerView) {
 
     companion object {
         fun create(
             parent: ViewGroup,
-            callback: (entity: TopStoryDomainEntity.Result) -> Unit,
+            callback: (entity: CallbackParam) -> Unit,
             imageLoader: ImageLoader
         ) =
             TopStoriesViewHolder(
@@ -33,8 +34,17 @@ class TopStoriesViewHolder constructor(
 
     fun bind(story: TopStoryDomainEntity.Result) {
         itemView.setOnClickListener {
-            callback(story)
+            callback(CallbackParam.Click(story))
         }
+        itemView.itemStoryLikeContainer.setOnClickListener {
+            if (story.favorite){
+                callback(CallbackParam.Dislike(story))
+            }else {
+                callback(CallbackParam.Like(story))
+            }
+        }
+
+        itemView.itemTopStoryIcon.show(story.favorite)
         itemView.findViewById<TextView>(R.id.itemStoryTitle).text = story.title
         itemView.findViewById<TextView>(R.id.itemStoryDateTime).text = story.updatedDate
         imageLoader.loadImage(

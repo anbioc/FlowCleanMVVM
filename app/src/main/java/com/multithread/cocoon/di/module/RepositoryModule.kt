@@ -1,6 +1,6 @@
 package com.multithread.cocoon.di.module
 
-import com.multithread.cocoon.base.AnyParam
+import com.multithread.cocoon.base.TopStoriesParam
 import com.multithread.cocoon.base.repository.StrategyFlowRepository
 import com.multithread.cocoon.data.local.GetTopStoriesLocalDataSource
 import com.multithread.cocoon.data.remote.GetTopStoriesRemoteDataSource
@@ -17,7 +17,7 @@ class RepositoryModule {
             localTopStoriesDataSource: GetTopStoriesLocalDataSource,
             remoteTopStoriesDataSource: GetTopStoriesRemoteDataSource,
             errorContainer: ErrorContainer
-    ): StrategyFlowRepository<TopStoryDomainEntity, AnyParam> =
+    ): StrategyFlowRepository<TopStoryDomainEntity, TopStoriesParam> =
             TopStoriesRepository(
                     localTopStoriesDataSource,
                     remoteTopStoriesDataSource,

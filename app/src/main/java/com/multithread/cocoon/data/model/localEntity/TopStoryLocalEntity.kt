@@ -21,7 +21,8 @@ data class TopStoryLocalEntity(
         val title: String,
         val updatedDate: String,
         val uri: String,
-        val url: String
+        val url: String,
+        val favorite: Boolean
 ): BaseDataModel {
 
 }

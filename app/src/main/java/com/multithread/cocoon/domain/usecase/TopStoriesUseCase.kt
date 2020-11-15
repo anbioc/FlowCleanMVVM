@@ -1,8 +1,8 @@
 package com.multithread.cocoon.domain.usecase
 
-import com.multithread.cocoon.base.AnyParam
 import com.multithread.cocoon.base.RepositoryStrategy
 import com.multithread.cocoon.base.ResultResponse
+import com.multithread.cocoon.base.TopStoriesParam
 import com.multithread.cocoon.base.domain.GeneralUseCase
 import com.multithread.cocoon.base.repository.StrategyFlowRepository
 import com.multithread.cocoon.domain.model.TopStoryDomainEntity
@@ -12,14 +12,28 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class TopStoriesUseCase @Inject constructor(
-    private val topStoriesRepository: StrategyFlowRepository<TopStoryDomainEntity, AnyParam>,
+    private val topStoriesRepository: StrategyFlowRepository<TopStoryDomainEntity, TopStoriesParam>,
     errorContainer: ErrorContainer
-) : GeneralUseCase<AnyParam, TopStoryDomainEntity>(errorContainer) {
+) : GeneralUseCase<TopStoriesParam, TopStoryDomainEntity>(errorContainer) {
     @ExperimentalCoroutinesApi
     override suspend fun buildFlow(
-        param: AnyParam,
+        param: TopStoriesParam,
         strategy: RepositoryStrategy
-    ): Flow<ResultResponse<TopStoryDomainEntity>> =
-        topStoriesRepository.getResult(param, RepositoryStrategy.Remote)
+    ): Flow<ResultResponse<TopStoryDomainEntity>> = when (param) {
+        is TopStoriesParam.AddToFavorites -> topStoriesRepository.getResult(
+            param,
+            RepositoryStrategy.Local
+        )
+        is TopStoriesParam.RemoveFromFavorites -> topStoriesRepository.getResult(
+            param,
+            RepositoryStrategy.Local
+        )
+        is TopStoriesParam.GetTopStories -> topStoriesRepository.getResult(
+            param,
+            RepositoryStrategy.OfflineFirst
+        )
+
+    }
+
 
 }

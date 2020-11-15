@@ -15,6 +15,6 @@ interface NewsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertOrUpdateAll(item: List<TopStoryLocalEntity>)
 
-    @Query("SELECT * FROM story")
+    @Query("SELECT * FROM story ORDER BY title desc")
     suspend fun getTopStories(): List<TopStoryLocalEntity>
 }
