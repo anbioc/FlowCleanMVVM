@@ -1,5 +1,6 @@
 package com.multithread.cocoon.presentation.favorite
 
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.multithread.cocoon.base.ui.ViewModelErrorSuccessFragment
 import com.multithread.cocoon.extension.show
 import com.multithread.cocoon.presentation.list.TopStoriesAdapter
@@ -24,7 +25,7 @@ class FavoriteFragment :
     }
 
     private val storiesAdapter by lazy {
-        TopStoriesAdapter(storyCallback, imageLoader)
+        TopStoriesAdapter(storyCallback, imageLoader, true)
     }
 
     override fun showLoadingSpinner(loading: Boolean) {
@@ -39,6 +40,10 @@ class FavoriteFragment :
         super.initView()
         favoriteList.apply {
             adapter = storiesAdapter
+            (layoutManager as StaggeredGridLayoutManager).apply {
+                spanCount = 2
+                setPadding(8, 8, 8, 8)
+            }
             setHasFixedSize(true)
         }
     }

@@ -8,7 +8,8 @@ import com.multithread.cocoon.util.ImageLoader
 
 class TopStoriesAdapter(
     private val callback: (entity: CallbackParam) -> Unit,
-    private val imageLoader: ImageLoader
+    private val imageLoader: ImageLoader,
+    private val isFavorite: Boolean = false
 ) : RecyclerView.Adapter<TopStoriesViewHolder>() {
 
     var itemList: List<TopStoryDomainEntity.Result> = emptyList()
@@ -18,11 +19,12 @@ class TopStoriesAdapter(
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopStoriesViewHolder =
-        TopStoriesViewHolder.create(parent, callback, imageLoader)
+        TopStoriesViewHolder.create(parent, callback, imageLoader, isFavorite)
 
     override fun onBindViewHolder(holder: TopStoriesViewHolder, position: Int) =
         holder.bind(itemList[position])
 
     override fun getItemCount(): Int  = itemList.size
+
 
 }
