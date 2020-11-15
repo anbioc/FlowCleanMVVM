@@ -13,7 +13,7 @@ class TopStoryDomainMapper @Inject constructor() : Mapper<TopStoryDTO, TopStoryD
     private fun createResult(results: List<TopStoryDTO.Result>): List<TopStoryDomainEntity.Result> =
             mutableListOf<TopStoryDomainEntity.Result>().apply {
                 results.forEach { result ->
-                    TopStoryDomainEntity.Result(
+                    add(TopStoryDomainEntity.Result(
                             abstract = result.abstract,
                             byline = result.abstract,
                             createdDate = result.abstract,
@@ -33,7 +33,7 @@ class TopStoryDomainMapper @Inject constructor() : Mapper<TopStoryDTO, TopStoryD
                             updatedDate = result.updatedDate,
                             uri = result.uri,
                             url = result.url
-                    )
+                    ))
                 }
             }
 

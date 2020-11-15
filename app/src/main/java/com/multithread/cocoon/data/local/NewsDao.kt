@@ -11,6 +11,8 @@ interface NewsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrUpdate(item: TopStoryLocalEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertOrUpdateAll(item: List<TopStoryLocalEntity>)
 
     suspend fun getTopStories(): List<TopStoryLocalEntity>
 }
