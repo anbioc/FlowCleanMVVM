@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="@dimen/margin_small">
+    android:layout_margin="@dimen/margin_xxsmall">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/itemStoryCardView"
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="@dimen/margin_small">
+                android:padding="@dimen/margin_xsmall">
 
                 <ImageView
                     android:id="@+id/itemStoryImage"

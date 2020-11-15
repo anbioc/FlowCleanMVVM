@@ -14,8 +14,11 @@ class TopStoriesAdapter(
 
     var itemList: List<TopStoryDomainEntity.Result> = emptyList()
         set(value) {
-            field = value
-            notifyDataSetChanged()
+            if (value.isEmpty().not()){
+                field = value
+                notifyDataSetChanged()
+            }
+
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopStoriesViewHolder =
