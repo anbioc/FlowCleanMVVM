@@ -1,4 +1,3 @@
-This is the sample for Cocoon (inc) interview.
 The App is developed using Kotlin, MVVM, Clean Architecture, with the help of tools like Dagger
 Coroutine/Flow, Retrofit, Glide. there is a great emphasis and effort to respect SOLID, DRY,
 YAGNII and also tried to use some common design patterns when it was needed.
