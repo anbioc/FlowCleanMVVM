@@ -55,17 +55,3 @@ class FavoriteViewModel @Inject constructor(
 
 }
 
-
-sealed class FavoriteTopStoriesEvent : BaseEvent {
-    object GetFavoriteTopStories : FavoriteTopStoriesEvent()
-}
-
-data class FavoriteTopStoriesState(
-    val data: FavoriteTopStoriesState.Data = FavoriteTopStoriesState.Data.NoData,
-    override var baseState: BaseState = BaseState()
-) : ViewModelState() {
-    sealed class Data {
-        data class TopStories(val story: TopStoryDomainEntity) : Data()
-        object NoData : Data()
-    }
-}
