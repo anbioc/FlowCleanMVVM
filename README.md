@@ -11,7 +11,6 @@ The app uses nytime.com api to fetch and show latest top stories.
   - Dagger
   - Clean Architecture
   - MVVM + Repository Pattern
-  - Packaging by Feature
   - Room
   - Mockito
   - Junit4
