@@ -1,7 +1,23 @@
-The codebase is developed using Kotlin, MVVM, Clean Architecture, with the help of tools like Dagger,
-Coroutine/Flow, Retrofit, Glide. there is a great emphasis and effort to respect SOLID, DRY,
-YAGNII and also tried to use some common design patterns when it seems necessary.
-It comprises of 2 initial page, the first page that is responsible to show top stories
-from nytimes.com, and the second page that is responsible to show user selected (favorite) items.
-There is also a detail page that is responsible to show some more details like article abstract
-and the link to the original content.
+# Cocoon
+
+An Android project for demonstrating some concepts and technologies such as MVVM, Clean architecture, Coroutine/Flow and Offline-first strategies on Android.
+
+The app uses Moviedbnytime.com api to fetch and show latest top stories.
+
+##### Tools & Technologies
+
+  - Kotlin
+  - Coroutines Flow
+  - Dagger
+  - Clean Architecture
+  - MVVM + Repository Pattern
+  - Packaging by Feature
+  - Room
+  - Mockito
+  - Junit4
+
+License
+----
+
+MIT
+
