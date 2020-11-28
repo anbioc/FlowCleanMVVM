@@ -1,4 +1,4 @@
-# Cocoon
+# Coroutine Flow Showcase
 
 An Android project for demonstrating some concepts and technologies such as MVVM, Clean architecture, Coroutine/Flow and Offline-first strategies on Android.
 
