@@ -21,7 +21,7 @@ before_script:
 
   - sdkmanager --version
 
-  - yes | sdkmanager --sdk_root=${ANDROID_HOME} --licences || true
+  - yes | sdkmanager --sdk_root=${ANDROID_HOME} --licenses || true
   - sdkmanager --sdk_root=${ANDROID_HOME} "platforms;android-${ANDROID_COMPILE_SDK}"
   - sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools"
   - sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;${ANDROID_BUILD_TOOLS}"
