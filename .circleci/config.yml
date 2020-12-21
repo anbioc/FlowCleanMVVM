@@ -7,10 +7,10 @@ jobs:
     executor: android/android
     working_directory: ~/code
     docker:
-      - image: circleci/api-30-node
-    #        auth:
-    #          username: mydockerhub-user
-    #          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+      - image: circleci/android:api-30-node
+            auth:
+              username: mydockerhub-user
+              password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
