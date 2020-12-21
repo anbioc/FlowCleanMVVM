@@ -67,7 +67,7 @@ abstract class BaseViewModelFragment<STATE : ViewModelState, EVENT: BaseEvent,
     /**
      * Observes state live-data and pass the result to the renderState.
      */
-    private fun observeState() = observeLiveData(viewModel.state) {
+    private fun observeState() = viewLifecycleOwner.observeLiveData(viewModel.state) {
         renderState(it)
     }
 
