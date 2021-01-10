@@ -4,6 +4,7 @@ An Android project for demonstrating some concepts and technologies such as MVVM
 
 The app uses nytime.com api to fetch and show latest top stories.
 
+
 ##### Tools & Technologies
 
   - Kotlin
