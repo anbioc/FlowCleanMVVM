@@ -12,8 +12,6 @@ The app uses nytime.com api to fetch and show latest top stories.
   - Clean Architecture
   - MVVM + Repository Pattern
   - Room
-  - Mockito
-  - Junit4
 
 License
 ----
